@@ -5,8 +5,11 @@ const BrandsController=require("../Controllers/Brand/BrandController");
 const CategoriesController=require("../Controllers/Categories/CategoriesController");
 const CustomersController=require("../Controllers/Customers/CustomersController");
 const SuppliersController=require("../Controllers/Suppliers/SuppliersController");
+const ExpenseTypesController=require("../Controllers/Expenses/ExpenseTypesController");
+const ExpensesController=require("../Controllers/Expenses/ExpensesController");
+const ProductsController=require("../Controllers/Product/ProductsController");
 const AuthVerifyMiddleware =require('../Middleware/AuthverifyMiddleware');
-// User Profile
+// User Profile 
 router.post("/Registration",UsersController.Registration);
 router.post("/Login",UsersController.Login);
 router.post("/ProfileUpdate",AuthVerifyMiddleware,UsersController.ProfileUpdate);
@@ -51,6 +54,30 @@ router.get("/SuppliersDropDown",AuthVerifyMiddleware,SuppliersController.Supplie
 // router.get("/DeleteSupplier/:id",AuthVerifyMiddleware,SuppliersController.DeleteSupplier);
 // router.get("/SuppliersDetailsByID/:id",AuthVerifyMiddleware,SuppliersController.SuppliersDetailsByID);
 
+// ExpenseTypes
+router.post("/CreateExpenseTypes",AuthVerifyMiddleware,ExpenseTypesController.CreateExpenseTypes);
+router.post("/UpdateExpenseTypes/:id",AuthVerifyMiddleware,ExpenseTypesController.UpdateExpenseTypes);
+router.get("/ExpenseTypesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ExpenseTypesController.ExpenseTypesList);
+router.get("/ExpenseTypesDropDown",AuthVerifyMiddleware,ExpenseTypesController.ExpenseTypesDropDown);
+// router.get("/DeleteExpenseTypes/:id",AuthVerifyMiddleware,ExpenseTypesController.DeleteExpenseTypes);
+// router.get("/ExpenseTypesDetailsByID/:id",AuthVerifyMiddleware,ExpenseTypesController.ExpenseTypesDetailsByID);
+
+// Expenses
+router.post("/CreateExpenses",AuthVerifyMiddleware,ExpensesController.CreateExpenses);
+router.post("/UpdateExpenses/:id",AuthVerifyMiddleware,ExpensesController.UpdateExpenses);
+router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ExpensesController.ExpensesList);
+// router.get("/DeleteExpense/:id",AuthVerifyMiddleware,ExpensesController.DeleteExpense);
+// router.get("/ExpenseDetailsByID/:id",AuthVerifyMiddleware,ExpensesController.ExpenseDetailsByID);
+
+
+
+// Products
+router.post("/CreateProducts",AuthVerifyMiddleware,ProductsController.CreateProducts);
+router.post("/UpdateProducts/:id",AuthVerifyMiddleware,ProductsController.UpdateProducts);
+// router.get("/ProductsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ProductsController.ProductsList);
+// router.get("/DeleteProduct/:id",AuthVerifyMiddleware,ProductsController.DeleteProduct);
+// router.get("/ProductsDetailsByID/:id",AuthVerifyMiddleware,ProductsController.ProductsDetailsByID);
+router.get("/ProductsDropDown",AuthVerifyMiddleware,ProductsController.ProductsDropDown);
 
 
 module.exports =router;
