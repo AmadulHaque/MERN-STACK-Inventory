@@ -1,5 +1,7 @@
 const express =require("express");
 const router = express.Router();
+const AuthVerifyMiddleware =require('../Middleware/AuthverifyMiddleware');
+
 const UsersController=require("../Controllers/Users/UserController");
 const BrandsController=require("../Controllers/Brand/BrandController");
 const CategoriesController=require("../Controllers/Categories/CategoriesController");
@@ -8,7 +10,8 @@ const SuppliersController=require("../Controllers/Suppliers/SuppliersController"
 const ExpenseTypesController=require("../Controllers/Expenses/ExpenseTypesController");
 const ExpensesController=require("../Controllers/Expenses/ExpensesController");
 const ProductsController=require("../Controllers/Product/ProductsController");
-const AuthVerifyMiddleware =require('../Middleware/AuthverifyMiddleware');
+const PurchasesController=require("../Controllers/Purchases/PurchasesController");
+
 // User Profile 
 router.post("/Registration",UsersController.Registration);
 router.post("/Login",UsersController.Login);
@@ -74,10 +77,20 @@ router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,
 // Products
 router.post("/CreateProducts",AuthVerifyMiddleware,ProductsController.CreateProducts);
 router.post("/UpdateProducts/:id",AuthVerifyMiddleware,ProductsController.UpdateProducts);
-// router.get("/ProductsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ProductsController.ProductsList);
+router.get("/ProductsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ProductsController.ProductsList);
 // router.get("/DeleteProduct/:id",AuthVerifyMiddleware,ProductsController.DeleteProduct);
 // router.get("/ProductsDetailsByID/:id",AuthVerifyMiddleware,ProductsController.ProductsDetailsByID);
 router.get("/ProductsDropDown",AuthVerifyMiddleware,ProductsController.ProductsDropDown);
+
+
+
+//Purchases
+router.post("/CreatePurchases",AuthVerifyMiddleware,PurchasesController.CreatePurchases);
+// router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,PurchasesController.PurchasesList);
+// router.get("/PurchasesDelete/:id",AuthVerifyMiddleware,PurchasesController.PurchasesDelete);
+
+
+
 
 
 module.exports =router;
