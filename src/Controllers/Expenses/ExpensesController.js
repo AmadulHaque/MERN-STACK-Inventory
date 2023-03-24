@@ -2,7 +2,7 @@ const DataModel = require("../../Models/Expenses/ExpensesModel");
 const CreateService = require("../../Services/common/CreateService");
 const UpdateService = require("../../Services/common/UpdateService");
 const ListOneJoinService = require("../../Services/common/ListOneJoinService");
-// const DeleteService = require("../../services/common/DeleteService");
+const DeleteService = require("../../Services/common/DeleteService");
 // const DetailsByIDService = require("../../services/common/DetailsByIDService");
 
 exports.CreateExpenses=async (req, res) => {
@@ -29,7 +29,7 @@ exports.ExpensesList=async (req, res) => {
 // }
 
 
-// exports.DeleteExpense=async (req, res) => {
-//     let Result=await DeleteService(req,DataModel);
-//     res.status(200).json(Result)
-// }
+exports.DeleteExpense=async (req, res) => {
+    let Result=await DeleteService(req,DataModel);
+    res.status(200).json(Result)
+}

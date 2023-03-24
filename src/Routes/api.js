@@ -11,6 +11,9 @@ const ExpenseTypesController=require("../Controllers/Expenses/ExpenseTypesContro
 const ExpensesController=require("../Controllers/Expenses/ExpensesController");
 const ProductsController=require("../Controllers/Product/ProductsController");
 const PurchasesController=require("../Controllers/Purchases/PurchasesController");
+const SalesController=require("../Controllers/Sales/SalesController");
+const ReturnsController=require("../Controllers/Returns/ReturnsController");
+const ReportController=require("../Controllers/Report/ReportController");
 
 // User Profile 
 router.post("/Registration",UsersController.Registration);
@@ -69,7 +72,7 @@ router.get("/ExpenseTypesDropDown",AuthVerifyMiddleware,ExpenseTypesController.E
 router.post("/CreateExpenses",AuthVerifyMiddleware,ExpensesController.CreateExpenses);
 router.post("/UpdateExpenses/:id",AuthVerifyMiddleware,ExpensesController.UpdateExpenses);
 router.get("/ExpensesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ExpensesController.ExpensesList);
-// router.get("/DeleteExpense/:id",AuthVerifyMiddleware,ExpensesController.DeleteExpense);
+router.get("/DeleteExpense/:id",AuthVerifyMiddleware,ExpensesController.DeleteExpense);
 // router.get("/ExpenseDetailsByID/:id",AuthVerifyMiddleware,ExpensesController.ExpenseDetailsByID);
 
 
@@ -86,11 +89,25 @@ router.get("/ProductsDropDown",AuthVerifyMiddleware,ProductsController.ProductsD
 
 //Purchases
 router.post("/CreatePurchases",AuthVerifyMiddleware,PurchasesController.CreatePurchases);
-// router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,PurchasesController.PurchasesList);
-// router.get("/PurchasesDelete/:id",AuthVerifyMiddleware,PurchasesController.PurchasesDelete);
+router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,PurchasesController.PurchasesList);
+router.get("/PurchasesDelete/:id",AuthVerifyMiddleware,PurchasesController.PurchasesDelete);
+
+//Sales
+router.post("/CreateSales",AuthVerifyMiddleware,SalesController.CreateSales);
+router.get("/SalesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,SalesController.SalesList);
+router.get("/SaleDelete/:id",AuthVerifyMiddleware,SalesController.SaleDelete);
 
 
+//Return
+router.post("/CreateReturns",AuthVerifyMiddleware,ReturnsController.CreateReturns);
+router.get("/ReturnsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ReturnsController.ReturnsList);
+router.get("/ReturnDelete/:id",AuthVerifyMiddleware,ReturnsController.ReturnDelete);
+
+//Report
+router.post("/ExpensesByDate",AuthVerifyMiddleware,ReportController.ExpensesByDate);
+router.post("/ReturnByDate",AuthVerifyMiddleware,ReportController.ReturnByDate);
+router.post("/PurchaseByDate",AuthVerifyMiddleware,ReportController.PurchaseByDate);
+router.post("/SalesByDate",AuthVerifyMiddleware,ReportController.SalesByDate);
 
 
-
-module.exports =router;
+module.exports = router;
