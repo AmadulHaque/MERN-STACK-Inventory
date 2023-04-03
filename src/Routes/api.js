@@ -15,6 +15,12 @@ const SalesController=require("../Controllers/Sales/SalesController");
 const ReturnsController=require("../Controllers/Returns/ReturnsController");
 const ReportController=require("../Controllers/Report/ReportController");
 
+
+// auth check
+router.get("/authcheck",AuthVerifyMiddleware, (req, res) => {
+  res.json({ status: true });
+});
+
 // User Profile 
 router.post("/Registration",UsersController.Registration);
 router.post("/Login",UsersController.Login);
