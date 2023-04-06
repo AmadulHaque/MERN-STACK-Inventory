@@ -7,8 +7,10 @@ const DeleteService= async (Request, Model) => {
         QueryObject['_id']=DeleteID;
         QueryObject[UserEmail]=UserEmail;
 
-        let Delete =  await Model.deleteMany(QueryObject)
+        let Delete=  await Model.deleteMany(QueryObject)
+
         return {status: "success",Delete:Delete}
+
     }
     catch (error) {
         return {status: "fail", data: error}
