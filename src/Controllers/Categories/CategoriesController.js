@@ -7,7 +7,7 @@ const DropDownService = require("../../Services/common/DropDownService");
 // const CheckAssociateService = require("../../Services/common/CheckAssociateService");
 const DeleteService = require("../../Services/common/DeleteService");
 const mongoose = require("mongoose");
-const DetailsByIDService = require("../../Services/common/DetailsByIDService");
+ const DetailsByIDService = require("../../Services/common/DetailsByIDService");
 
 exports.CreateCategories=async (req, res) => {
     let Result= await CreateService(req,DataModel)
