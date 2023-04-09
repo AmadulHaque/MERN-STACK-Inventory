@@ -1,27 +1,23 @@
 const mongoose = require("mongoose");
-const DetailsByIDService = async (req, DataModel) => {
-    try {
-        const { id } = req.params;
-        const { email: UserEmail } = req.headers;
-        const query = {
-            _id: new mongoose.Types.ObjectId(id),
-            UserEmail,
-        };
-        // const data = await DataModel.findOne(query);
-        const data = await DataModel.aggregate([
-            { $match: query },
-        ]);
-        return { status: "success", data };
-    } catch (error) {
-        return { status: "fail", data: error };
+const DetailsByIDService= async (Request,DataModel) => {
+    try{
+
+        let DetailsID=Request.params.id;
+        let UserEmail=Request.headers['email'];
+
+        const ObjectId = mongoose.Types.ObjectId;
+        let QueryObject={};
+        QueryObject['_id']=new mongoose.Types.ObjectId(DetailsID);
+        QueryObject['UserEmail']=UserEmail;
+
+
+        let data = await DataModel.aggregate([
+            {$match: QueryObject}
+        ])
+        return {status: "success", data: data}
     }
-};
-
-module.exports = DetailsByIDService;
-
-
-
-
-
-
-
+    catch (error) {
+        return {status: "fail", data: error}
+    }
+}
+module.exports=DetailsByIDService

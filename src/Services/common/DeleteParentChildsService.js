@@ -15,13 +15,12 @@ const DeleteParentChildsService= async (Request, ParentModel,ChildsModel,JoinPro
         let UserEmail=Request.headers['email'];
 
         let ChildQueryObject={};
-        ChildQueryObject[JoinPropertyName]=DeleteID;
+        ChildQueryObject[JoinPropertyName]=new mongoose.Types.ObjectId(DeleteID);
         ChildQueryObject[UserEmail]=UserEmail;
 
         let ParentQueryObject={};
-        ParentQueryObject['_id']=DeleteID;
+        ParentQueryObject['_id']=new mongoose.Types.ObjectId(DeleteID);
         ParentQueryObject[UserEmail]=UserEmail;
-
 
         // First Process
         let ChildsDelete=  await ChildsModel.remove(ChildQueryObject).session(session);
