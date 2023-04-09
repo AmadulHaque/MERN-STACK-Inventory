@@ -39,8 +39,7 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter);
 
 
-let URI ="mongodb://127.0.0.1:27017/inventory";
-// let URI ="mongodb+srv://crud_app:crud_app@cluster0.bth3eqc.mongodb.net/inventory?retryWrites=true&w=majority";
+let URI ="mongodb+srv://crud_app:crud_app@cluster0.bth3eqc.mongodb.net/inventory?retryWrites=true&w=majority";
 // let OPTION ={user:'',pass:''};
 mongoose.connect(URI);
 // mongoose.connect(URI,OPTION,(error)=>{

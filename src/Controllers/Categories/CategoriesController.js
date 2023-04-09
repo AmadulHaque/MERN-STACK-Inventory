@@ -36,7 +36,12 @@ exports.CategoriesDropDown=async (req, res) => {
 
 exports.CategoriesDetailsByID=async (req, res) => {
     let Result= await DetailsByIDService(req,DataModel)
-    res.status(200).json(Result)
+    if (Result.status=='fail') {
+        res.status(400).json(Result)
+    } else {
+        res.status(200).json(Result)
+
+    }
 }
 
 
