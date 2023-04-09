@@ -4,7 +4,7 @@ const DeleteService= async (Request, Model) => {
         let UserEmail=Request.headers['email'];
 
         let QueryObject={};
-        QueryObject['_id']=DeleteID;
+        QueryObject['_id']=new mongoose.Types.ObjectId(DeleteID);
         QueryObject[UserEmail]=UserEmail;
 
         let Delete=  await Model.deleteMany(QueryObject)
