@@ -5,9 +5,9 @@ const UpdateService = require("../../Services/common/UpdateService");
 const ListService = require("../../Services/common/ListService");
 const DropDownService = require("../../Services/common/DropDownService");
 // const CheckAssociateService = require("../../Services/common/CheckAssociateService");
-// const DeleteService = require("../../Services/common/DeleteService");
+const DeleteService = require("../../Services/common/DeleteService");
 // const mongoose = require("mongoose");
-// const DetailsByIDService = require("../../Services/common/DetailsByIDService");
+const DetailsByIDService = require("../../Services/common/DetailsByIDService");
 
 exports.CreateBrand=async (req, res) => {
     let Result= await CreateService(req,DataModel)
@@ -29,11 +29,10 @@ exports.BrandList=async (req, res) => {
     res.status(200).json(Result)
 }
 
-
-// exports.BrandDetailsByID=async (req, res) => {
-//     let Result = await DetailsByIDService(req,DataModel);
-//     res.status(200).json(Result)
-// }
+exports.BrandDetailsByID=async (req, res) => {
+    let Result = await DetailsByIDService(req,DataModel);
+    res.status(200).json(Result)
+}
 
 
 exports.BrandDropDown= async (req, res) => {
@@ -42,3 +41,15 @@ exports.BrandDropDown= async (req, res) => {
 }
 
 
+exports.DeleteBrand=async (req, res) => {
+    // let DeleteID=req.params.id;
+    // const ObjectId = new mongoose.Types.ObjectId;
+    // let CheckAssociate= await CheckAssociateService({BrandID:ObjectId(DeleteID)},ProductsModel);
+    // if(CheckAssociate){
+    //     res.status(200).json({status: "associate", data: "Associate with Product"})
+    // }
+    // else{
+        let Result=await DeleteService(req,DataModel);
+        res.status(200).json(Result)
+    // }
+}
