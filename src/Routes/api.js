@@ -14,6 +14,7 @@ const PurchasesController=require("../Controllers/Purchases/PurchasesController"
 const SalesController=require("../Controllers/Sales/SalesController");
 const ReturnsController=require("../Controllers/Returns/ReturnsController");
 const ReportController=require("../Controllers/Report/ReportController");
+const SummaryController = require("../Controllers/Summary/SummaryController");
 
 
 // auth check
@@ -114,6 +115,16 @@ router.post("/ExpensesByDate",AuthVerifyMiddleware,ReportController.ExpensesByDa
 router.post("/ReturnByDate",AuthVerifyMiddleware,ReportController.ReturnByDate);
 router.post("/PurchaseByDate",AuthVerifyMiddleware,ReportController.PurchaseByDate);
 router.post("/SalesByDate",AuthVerifyMiddleware,ReportController.SalesByDate);
+
+//Summary
+router.get("/ExpensesSummary",AuthVerifyMiddleware,SummaryController.ExpensesSummary);
+router.get("/ReturnSummary",AuthVerifyMiddleware,SummaryController.ReturnSummary);
+router.get("/PurchaseSummary",AuthVerifyMiddleware,SummaryController.PurchaseSummary);
+router.get("/SalesSummary",AuthVerifyMiddleware,SummaryController.SalesSummary);
+
+router.get("/test",AuthVerifyMiddleware, (req, res) => {
+  res.send("hello test");
+});
 
 
 module.exports = router;
