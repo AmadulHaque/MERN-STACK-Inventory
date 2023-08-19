@@ -1,7 +1,6 @@
 {
-  "name": "MERN-STACK-Inventory",
+  "name": "mern-stack-inventory",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
@@ -32,6 +31,8 @@
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
-  }
+    "nodemon": "^2.0.21",
+    "vercel": "^30.2.2"
+  },
+  "description": ""
 }
